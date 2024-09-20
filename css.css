@@ -1,0 +1,13 @@
+table,td,tr{
+    /* border-style: dashed;
+    border-color: red; */
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+table tr:first-child{background-color: hotpink;
+font-weight: bold;}
+table tr:not(:first-child):nth-child(2n){background-color: aqua;font-weight: bold;}
+
+table tr:not(:first-child):nth-child(2n+1){background-color: red;font-weight: bold;}
+table tr:not(:first-child):hover{background-color: green;font-weight: bold;}
