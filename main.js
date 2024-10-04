@@ -50,5 +50,12 @@ for (let person of array) {
     else{
         firstname.colSpan = 2
     }
-    
+    tr.addEventListener("click", function(e){
+        console.log("click")
+        const selected = tbody.querySelector(".selected")
+        if (selected != undefined){
+            selected.classList.remove("selected")
+        }
+        e.currentTarget.classList.add('selected')
+    })
 }

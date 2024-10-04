@@ -11,3 +11,7 @@ tbody tr:nth-child(2n){background-color: aqua;font-weight: bold;}
 
 tbody tr:nth-child(2n+1){background-color: red;font-weight: bold;}
 tbody tr:hover{background-color: green;font-weight: bold;}
+
+.selected{
+    transform: scale(1.2);
+}
