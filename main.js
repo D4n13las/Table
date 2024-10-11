@@ -49,7 +49,8 @@ tablerow.appendChild(th4)
 th4.innerHTML = "Állat"
 let tbody = document.createElement("tbody")
 table.appendChild(tbody)
-for (let person of array) {
+function make_table(given_array){
+for (let person of given_array) {
     let tr = document.createElement("tr")
     tbody.appendChild(tr)
     const lastname = document.createElement("td")
@@ -84,4 +85,28 @@ for (let person of array) {
         }
         e.currentTarget.classList.add('selected')
     })
-}
+}}
+make_table(array)
+const form = document.getElementById('form')
+form.addEventListener('submit',function(e){
+    e.preventDefault()
+    const lastname = document.getElementById("lastname")
+    const firstname = document.getElementById("firstname1")
+    const firstname2 = document.getElementById("firstname2")
+    const married = document.getElementById("married")
+    const pet = document.getElementById("pet")
+    const lastnamevalue = lastname.value
+    const firstnamevalue = firstname.value
+    const firstname2value = firstname2.value
+    const marriedvalue = married.checked
+    const petvalue = pet.value
+    const new_person = {
+        firstname1: firstnamevalue,
+        firstname2: firstname2value === '' ? undefined : firstname2value,
+        lastname: lastnamevalue,
+        married: marriedvalue,
+        pet: petvalue
+    }
+    let given_person = [new_person]
+    make_table(given_person)
+})
