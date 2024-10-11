@@ -100,13 +100,38 @@ form.addEventListener('submit',function(e){
     const firstname2value = firstname2.value
     const marriedvalue = married.checked
     const petvalue = pet.value
-    const new_person = {
-        firstname1: firstnamevalue,
-        firstname2: firstname2value === '' ? undefined : firstname2value,
-        lastname: lastnamevalue,
-        married: marriedvalue,
-        pet: petvalue
+    if (validate_fields(firstname,lastname,pet)){
+        const new_person = {
+            firstname1: firstnamevalue,
+            firstname2: firstname2value === '' ? undefined : firstname2value,
+            lastname: lastnamevalue,
+            married: marriedvalue,
+            pet: petvalue
+        }
+        let given_person = [new_person]
+        make_table(given_person)
     }
-    let given_person = [new_person]
-    make_table(given_person)
 })
+function validate_fields(first,last,pet)
+{
+    let result = true
+    if (first.value === ''){
+        const par = first.parentElement
+        const error = par.querySelector(".error")
+        error.innerHTML = 'Kötelező vezetéknév'
+        result = false
+    }
+    if (last.value === ''){
+        const par = last.parentElement
+        const error = par.querySelector(".error")
+        error.innerHTML = 'Kötelező Keresztnév'
+        result = false
+    }
+    if (pet.value === ''){
+        const par = pet.parentElement
+        const error = par.querySelector(".error")
+        error.innerHTML = 'Kötelező állat név'
+        result = false
+    }
+    return result
+}
