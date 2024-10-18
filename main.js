@@ -110,10 +110,15 @@ form.addEventListener('submit',function(e){
         }
         let given_person = [new_person]
         make_table(given_person)
+        
     }
 })
 function validate_fields(first,last,pet)
 {
+    const querySelectorError = form.querySelectorAll(".error");
+    for (const error of querySelectorError){
+        error.innerHTML = ''
+    }
     let result = true
     if (first.value === ''){
         const par = first.parentElement
