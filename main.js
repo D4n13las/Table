@@ -140,3 +140,8 @@ function validate_fields(first,last,pet)
     }
     return result
 }
+function createTableCell(htmlElement, inerHTML,parentElement){
+    const tag = document.createElement(htmlElement)
+    tag.innerHTML = inerHTML
+    parentElement.appendChild(tag)
+}
