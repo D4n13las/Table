@@ -110,7 +110,7 @@ form.addEventListener('submit',function(e){
         }
         let given_person = [new_person]
         make_table(given_person)
-        
+        form.reset()
     }
 })
 function validate_fields(first,last,pet)
