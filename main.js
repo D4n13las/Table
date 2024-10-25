@@ -27,28 +27,25 @@ let array = [
         pet: 'macska'
     },
 ]
-let table = document.createElement('table')
-document.body.appendChild(table)
-let tablethaed = document.createElement("thead")
-table.appendChild(tablethaed)
-let tablerow = document.createElement("tr")
-tablethaed.appendChild(tablerow)
-let nevek = ["Elso nev", "Masodik nev","Hazas","Állat"]
-let th1 = document.createElement("th")
-tablerow.appendChild(th1)
-th1.innerHTML = "Első név"
-let th2 = document.createElement("th")
-tablerow.appendChild(th2)
-th2.innerHTML = "Másodki név"
-th2.colSpan = 2
-let th3 = document.createElement("th")
-tablerow.appendChild(th3)
-th3.innerHTML = "Házas"
-let th4 = document.createElement("th")
-tablerow.appendChild(th4)
-th4.innerHTML = "Állat"
-let tbody = document.createElement("tbody")
-table.appendChild(tbody)
+createHtmlElement('table','persontable',document.body)
+createHtmlElement('thead','personthead',persontable)
+createHtmlElement('tbody','persontody',personthead)
+createHtmlElement('tr','persontr',persontody)
+
+document.body.appendChild(table);
+table.appendChild(tablehead);
+table.appendChild(tablebody);
+tablehead.appendChild(tableheadrow);
+for (let i =0; i<valami.length;i++){
+    const th = createtablecell('th',valami[i].th,tableheadrow)
+    th.innerHTML=valami[i].th
+    
+    if (valami[i]===2){
+        th.colspan =valami[i].colspan
+    }
+    tableheadrow.appendChild(th)
+}
+
 function make_table(given_array){
 for (let person of given_array) {
     let tr = document.createElement("tr")
@@ -139,9 +136,4 @@ function validate_fields(first,last,pet)
         result = false
     }
     return result
-}
-function createTableCell(htmlElement, inerHTML,parentElement){
-    const tag = document.createElement(htmlElement)
-    tag.innerHTML = inerHTML
-    parentElement.appendChild(tag)
 }
